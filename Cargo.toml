@@ -1,0 +1,31 @@
+[package]
+name = "embedded-rs485-uart"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+defmt = { version = "1.0.1", optional = true }
+derive_more = { version = "2.0.1", default-features = false, features = ["from", "display", "error"] }
+dynamixel2 = { git = "https://github.com/omelia-iliffe/dynamixel2-rs", version = "0.9.1", default-features = false, optional = true }
+embedded-hal = "1.0.0"
+embedded-io = "0.7.1"
+esp-hal = { version = "1.0.0", optional = true, default-features = false , features = ["requires-unstable"]}
+ww-bear = { git = "https://github.com/omelia-iliffe/westwood-bear-rs", branch = "async", version= "0.1.0", default-features = false, optional = true }
+
+[features]
+defmt = ["dep:defmt", "embedded-io/defmt", "ww-bear?/defmt"]
+
+# library support features
+dynamixel2 = ["dep:dynamixel2"]
+ww-bear = ["dep:ww-bear"]
+
+# hardware support features
+esp-hal = ["dep:esp-hal"]
+esp32c2 = ["esp-hal/esp32c2"]
+esp32c3 = ["esp-hal/esp32c3"]
+esp32c6 = ["esp-hal/esp32c6"]
+esp32h2 = ["esp-hal/esp32h2"]
+esp32 = ["esp-hal/esp32"]
+esp32s2 = ["esp-hal/esp32s2"]
+esp32s3 = ["esp-hal/esp32s3"]
+
