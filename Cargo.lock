@@ -401,20 +401,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "embedded-rs485-uart"
-version = "0.1.0"
-dependencies = [
- "defmt",
- "derive_more",
- "dynamixel2",
- "embassy-time",
- "embedded-hal 1.0.0",
- "embedded-io 0.7.1",
- "esp-hal",
- "ww-bear",
-]
-
-[[package]]
 name = "enumset"
 version = "1.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1029,6 +1015,20 @@ dependencies = [
  "ryu",
  "serde",
  "unsafe-libyaml",
+]
+
+[[package]]
+name = "serialport-adapters"
+version = "0.1.0"
+dependencies = [
+ "defmt",
+ "derive_more",
+ "dynamixel2",
+ "embassy-time",
+ "embedded-hal 1.0.0",
+ "embedded-io 0.7.1",
+ "esp-hal",
+ "ww-bear",
 ]
 
 [[package]]

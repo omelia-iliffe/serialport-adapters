@@ -23,7 +23,7 @@ esp-backtrace = { version = "0.18.1", features = [
 ] }
 esp-println = { version = "0.16.1", features = ["defmt-espflash", "esp32s3", "jtag-serial"], default-features = false}
 
-embedded-rs485-uart = {path = "../..", features = ["dynamixel2", "esp-hal", "esp32s3", "defmt"]}
+serialport-adapters = {path = "../..", features = ["dynamixel2", "esp-hal", "esp32s3", "defmt"]}
 dynamixel2 = {git = "https://github.com/omelia-iliffe/dynamixel2-rs", branch = "async", default-features = false}
 
 

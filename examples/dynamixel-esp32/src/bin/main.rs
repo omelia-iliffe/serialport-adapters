@@ -37,7 +37,7 @@ fn main() -> ! {
     .with_tx(dynamixel_tx);
     let dynamixel_dir =
         esp_hal::gpio::Output::new(dynamixel_dir, esp_hal::gpio::Level::Low, Default::default());
-    let dynamixel_uart = embedded_rs485_uart::esp_hal::Rs485Uart::new(
+    let dynamixel_uart = serialport_adapters::esp_hal::Rs485Uart::new(
         dynamixel_uart,
         dynamixel_dir,
         dynamixel_baudrate,

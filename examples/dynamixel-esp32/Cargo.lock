@@ -256,11 +256,11 @@ dependencies = [
  "critical-section",
  "defmt 1.0.1",
  "dynamixel2",
- "embedded-rs485-uart",
  "esp-backtrace",
  "esp-bootloader-esp-idf",
  "esp-hal",
  "esp-println",
+ "serialport-adapters",
 ]
 
 [[package]]
@@ -450,20 +450,6 @@ checksum = "2564b9f813c544241430e147d8bc454815ef9ac998878d30cc3055449f7fd4c0"
 dependencies = [
  "defmt 1.0.1",
  "embedded-io 0.7.1",
-]
-
-[[package]]
-name = "embedded-rs485-uart"
-version = "0.1.0"
-dependencies = [
- "defmt 1.0.1",
- "derive_more",
- "dynamixel2",
- "embassy-time",
- "embedded-hal 1.0.0",
- "embedded-io 0.7.1",
- "esp-hal",
- "ww-bear",
 ]
 
 [[package]]
@@ -1219,6 +1205,20 @@ dependencies = [
  "ryu",
  "serde",
  "unsafe-libyaml",
+]
+
+[[package]]
+name = "serialport-adapters"
+version = "0.1.0"
+dependencies = [
+ "defmt 1.0.1",
+ "derive_more",
+ "dynamixel2",
+ "embassy-time",
+ "embedded-hal 1.0.0",
+ "embedded-io 0.7.1",
+ "esp-hal",
+ "ww-bear",
 ]
 
 [[package]]
