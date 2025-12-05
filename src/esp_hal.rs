@@ -9,6 +9,11 @@ pub enum UartError {
     Timeout,
     SetBaudError(ConfigError),
 }
+impl From<embassy_time::TimeoutError> for UartError {
+    fn from(_: embassy_time::TimeoutError) -> Self {
+        UartError::Timeout
+    }
+}
 
 pub struct Rs485Uart<'a, Dir, Mode: DriverMode> {
     uart: Uart<'a, Mode>,
@@ -104,8 +109,17 @@ impl<'a, Dir: embedded_hal::digital::OutputPin> Rs485Uart<'a, Dir, Async> {
         }
     }
 
-    pub async fn read_async(&mut self, buffer: &mut [u8]) -> Result<usize, UartError> {
-        let read = self.uart.read_buffered(buffer)?;
+    pub async fn read_async(
+        &mut self,
+        buffer: &mut [u8],
+        deadline: &embassy_time::Instant,
+    ) -> Result<usize, UartError> {
+        use embassy_time::WithTimeout;
+        let read = self
+            .uart
+            .read_async(buffer)
+            .with_deadline(*deadline)
+            .await??;
         #[cfg(feature = "defmt")]
         if read > 0 {
             defmt::trace!("read {} bytes", read);

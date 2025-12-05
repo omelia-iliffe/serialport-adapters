@@ -6,7 +6,8 @@ edition = "2024"
 [dependencies]
 defmt = { version = "1.0.1", optional = true }
 derive_more = { version = "2.0.1", default-features = false, features = ["from", "display", "error"] }
-dynamixel2 = { git = "https://github.com/omelia-iliffe/dynamixel2-rs", version = "0.9.1", default-features = false, optional = true }
+dynamixel2 = { git = "https://github.com/omelia-iliffe/dynamixel2-rs", branch = "async", version = "0.9.1", default-features = false, optional = true }
+embassy-time = { version = "0.5.0", optional = true }
 embedded-hal = "1.0.0"
 embedded-io = "0.7.1"
 esp-hal = { version = "1.0.0", optional = true, default-features = false , features = ["requires-unstable"]}
@@ -20,7 +21,7 @@ dynamixel2 = ["dep:dynamixel2"]
 ww-bear = ["dep:ww-bear"]
 
 # hardware support features
-esp-hal = ["dep:esp-hal"]
+esp-hal = ["dep:esp-hal", "embassy-time"]
 esp32c2 = ["esp-hal/esp32c2"]
 esp32c3 = ["esp-hal/esp32c3"]
 esp32c6 = ["esp-hal/esp32c6"]

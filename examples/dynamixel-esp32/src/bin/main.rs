@@ -44,7 +44,8 @@ fn main() -> ! {
     )
     .unwrap();
 
-    let mut client = dynamixel2::Client::with_buffers(dynamixel_uart, [0; 128], [0; 128]).unwrap();
+    let mut client =
+        dynamixel2::client::Client::with_buffers(dynamixel_uart, [0; 128], [0; 128]).unwrap();
 
     loop {
         info!("Starting scan at {}", dynamixel_baudrate);

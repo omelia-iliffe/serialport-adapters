@@ -266,7 +266,10 @@ dependencies = [
 [[package]]
 name = "dynamixel2"
 version = "0.9.1"
-source = "git+https://github.com/omelia-iliffe/dynamixel2-rs#c8b4e3f3db66f518fb60be51246c6a4c475e55de"
+source = "git+https://github.com/omelia-iliffe/dynamixel2-rs?branch=async#2302235956ff9decf7e0848f4148e846ccf8d437"
+dependencies = [
+ "bisync",
+]
 
 [[package]]
 name = "embassy-embedded-hal"
@@ -330,6 +333,31 @@ dependencies = [
  "futures-core",
  "futures-sink",
  "heapless 0.8.0",
+]
+
+[[package]]
+name = "embassy-time"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f4fa65b9284d974dad7a23bb72835c4ec85c0b540d86af7fc4098c88cff51d65"
+dependencies = [
+ "cfg-if",
+ "critical-section",
+ "document-features",
+ "embassy-time-driver",
+ "embedded-hal 0.2.7",
+ "embedded-hal 1.0.0",
+ "embedded-hal-async",
+ "futures-core",
+]
+
+[[package]]
+name = "embassy-time-driver"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a0a244c7dc22c8d0289379c8d8830cae06bb93d8f990194d0de5efb3b5ae7ba6"
+dependencies = [
+ "document-features",
 ]
 
 [[package]]
@@ -431,6 +459,7 @@ dependencies = [
  "defmt 1.0.1",
  "derive_more",
  "dynamixel2",
+ "embassy-time",
  "embedded-hal 1.0.0",
  "embedded-io 0.7.1",
  "esp-hal",

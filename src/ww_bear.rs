@@ -51,7 +51,7 @@ mod esp_hal {
         for Rs485Uart<'_, Dir, Async>
     {
         type Error = UartError;
-        type Instant = esp_hal::time::Instant;
+        type Instant = embassy_time::Instant;
 
         fn baud_rate(&self) -> Result<u32, Self::Error> {
             Ok(Rs485Uart::baud_rate(self))
@@ -74,7 +74,7 @@ mod esp_hal {
             if deadline < &Self::Instant::now() {
                 return Err(Self::Error::Timeout);
             }
-            let read = Rs485Uart::read_async(self, buffer).await?;
+            let read = Rs485Uart::read_async(self, buffer, deadline).await?;
             Ok(read)
         }
 
@@ -84,7 +84,7 @@ mod esp_hal {
 
         fn make_deadline(&self, timeout: core::time::Duration) -> Self::Instant {
             let micros = timeout.as_micros();
-            Self::Instant::now().add(esp_hal::time::Duration::from_micros(micros as u64))
+            Self::Instant::now().add(embassy_time::Duration::from_micros(micros as u64))
         }
 
         fn is_timeout_error(error: &Self::Error) -> bool {
